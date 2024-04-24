@@ -52,7 +52,7 @@ const CharacterCard = ({ setIsOpen, charaDetail, setDetail }: props) => {
           )
           }
           <CardContent sx={{ pt: 1, pb: 1 }}>
-            <Typography variant='subtitle1' color='text.secondary'>
+            <Typography variant='subtitle1' color='text.secondary' sx={{fontWeight:'bold'}}>
               {charaDetail.character.name}
             </Typography>
           </CardContent>
