@@ -6,6 +6,8 @@ import ShieldIcon from '@mui/icons-material/Shield';
 import { TransitionProps } from '@mui/material/transitions';
 import typeParse from '../functions/parse';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import InfoIcon from '@mui/icons-material/Info';
 
 type props = {
 	isOpen: boolean,
@@ -32,19 +34,34 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 	const theme = createTheme({
 		palette: {
 			error: {
-				main: '#ff0000'
+				main: '#f03b35'
 			},
 			info: {
-				main: '#ffc233'
+				main: '#edc62b'
 			},
 			success: {
 				main: '#33c9ff'
 			},
 			warning: {
 				main: '#ee6df7'
+			},
+			secondary: {
+				main: '#314c78'
 			}
-		}
+		},
+		typography: {
+      fontFamily: 'Noto Sans JP'
+    }
 	});
+
+	const chipStyle = {
+		borderRadius: 1, 
+		transform: 'skewX(-7deg)', 
+		marginRight:0.5, 
+		textTransform: 'uppercase',
+		width: 100,
+		fontWeight: 'bold'
+	}
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -99,17 +116,21 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 					<Paper sx={{ width: 500 }} elevation={0}>
 							<Card variant='outlined'>
 								<CardContent>
-									<Typography variant='h5'>{charaDetail.character.name}</Typography><br />
-									<Typography variant='subtitle1'>
+									<Typography variant='h6' gutterBottom>{charaDetail.character.name}</Typography>
+									<Typography variant='subtitle2'>
 										{charaDetail.character.profile}
 									</Typography>
 								</CardContent>
 							</Card>	
 							<Card sx={{mt: 2}} variant='outlined'>
 								<CardContent>
+									<Stack direction='row' sx={{margin: 0.2, marginLeft: 0.7}}>
+										<Chip icon={<InfoIcon />} label={parser.getRole(charaDetail.character.role)} color='primary' sx={{...chipStyle, letterSpacing: -3}} variant='outlined'></Chip>
+										<Chip icon={<FlashOnIcon />} label={parser.getBulletType(charaDetail.character.bulletType)} color={parser.getBulletTypeStyle(charaDetail.character.bulletType)} sx={chipStyle} variant='outlined'></Chip>
+									</Stack>
 									<Stack direction='row' sx={{margin: 0.2}}>
-										<Chip icon={<FlashOnIcon />} label={parser.getBulletType(charaDetail.character.bulletType)} color={parser.getBulletTypeStyle(charaDetail.character.bulletType)} variant='outlined' sx={{marginRight:2}}></Chip>
-										<Chip icon={<ShieldIcon />} label={parser.getArmorType(charaDetail.character.armorType)} color={parser.getArmorTypeStyle(charaDetail.character.armorType)} variant='outlined'></Chip>
+										<Chip icon={<FmdGoodIcon />} label={charaDetail.character.position} color='secondary' sx={chipStyle} variant='outlined'></Chip>
+										<Chip icon={<ShieldIcon />} label={parser.getArmorType(charaDetail.character.armorType)} color={parser.getArmorTypeStyle(charaDetail.character.armorType)} sx={chipStyle} variant='outlined'></Chip>
 									</Stack>
 								</CardContent>
 							</Card>

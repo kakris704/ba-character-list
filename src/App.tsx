@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, ThemeProvider, createTheme } from '@mui/material';
 import CharacterCard from './components/CharacterCard';
 import CharacterDialog from './components/CharacterDialog';
 import blueAPI from './functions/api';
@@ -44,9 +44,16 @@ function App() {
     console.log('render');
   })
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Noto Sans JP'
+    }
+  });
+
 
   return (
     <>
+      <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
         <Grid container spacing={4} sx={{mt:4}}>
           {cards.map((item: object, index:number) => {
@@ -56,6 +63,7 @@ function App() {
         </Grid> 
       </Container>
       <CharacterDialog isOpen={dialogOpen} setIsOpen={setDialogOpen} charaDetail={detail}/>
+      </ThemeProvider>
     </>
   );
 }
