@@ -33,17 +33,17 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 
 	const theme = createTheme({
 		palette: {
-			error: {
-				main: '#f03b35'
+			error: { // 爆発・軽装備
+				main: '#a51c1f'
 			},
-			info: {
-				main: '#edc62b'
+			info: { // 貫通・重装備
+				main: '#b27127'
 			},
-			success: {
-				main: '#33c9ff'
+			success: { // 神秘・特殊装甲
+				main: '#206d9e'
 			},
-			warning: {
-				main: '#ee6df7'
+			warning: { // 振動・弾力装甲
+				main: '#973fa5'
 			},
 			secondary: {
 				main: '#314c78'
@@ -60,7 +60,8 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 		marginRight:0.5, 
 		textTransform: 'uppercase',
 		width: 100,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		opacity: 0.9
 	}
 
 	return (
@@ -71,7 +72,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 			maxWidth='xl' 
 			PaperProps={{sx:{borderRadius: 5}}}
 		>
-			<DialogTitle sx={{ borderBottom: 'solid 1px lightgray', paddingBottom: 1 }}>
+			<DialogTitle sx={{ borderBottom: 'solid 1px lightgray', paddingBottom: 1, background: 'linear-gradient(90deg, rgba(207,237,255,1) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 100%)' }}>
 				<Stack direction='row-reverse'>
 					<Typography variant="h5" sx={{ textDecoration: 'solid underline 6px yellow', fontWeight: 700, margin:'auto'}}>生徒情報</Typography>
 					<IconButton onClick={handleClose} sx={{ position: 'absolute', marginLeft: 'auto', top: 10}}>
