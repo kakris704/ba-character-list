@@ -45,7 +45,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 			warning: { // 振動・弾力装甲
 				main: '#973fa5'
 			},
-			secondary: {
+			secondary: { // ポジション
 				main: '#314c78'
 			}
 		},
