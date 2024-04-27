@@ -1,13 +1,11 @@
 import { Avatar, Button, Card, CardContent, CardMedia, Chip, Dialog, DialogContent, DialogTitle, Hidden, IconButton, Paper, Skeleton, Slide, Stack, Typography} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
-import FlashOnIcon from '@mui/icons-material/FlashOn';
-import ShieldIcon from '@mui/icons-material/Shield';
 import { TransitionProps } from '@mui/material/transitions';
 import typeParse from '../functions/parse';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import InfoIcon from '@mui/icons-material/Info';
+import AttributeChip from './AttributeChip';
+
 
 type props = {
 	isOpen: boolean,
@@ -53,16 +51,6 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
       fontFamily: 'Noto Sans JP'
     }
 	});
-
-	const chipStyle = {
-		borderRadius: 1, 
-		transform: 'skewX(-7deg)', 
-		marginRight:0.5, 
-		textTransform: 'uppercase',
-		width: 100,
-		fontWeight: 'bold',
-		opacity: 0.9
-	}
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -125,14 +113,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 							</Card>	
 							<Card sx={{mt: 2}} variant='outlined'>
 								<CardContent>
-									<Stack direction='row' sx={{margin: 0.2, marginLeft: 0.7}}>
-										<Chip icon={<InfoIcon />} label={parser.getRole(charaDetail.character.role)} color='primary' sx={{...chipStyle, letterSpacing: -3}} variant='outlined'></Chip>
-										<Chip icon={<FlashOnIcon />} label={parser.getBulletType(charaDetail.character.bulletType)} color={parser.getBulletTypeStyle(charaDetail.character.bulletType)} sx={chipStyle} variant='outlined'></Chip>
-									</Stack>
-									<Stack direction='row' sx={{margin: 0.2}}>
-										<Chip icon={<FmdGoodIcon />} label={charaDetail.character.position} color='secondary' sx={chipStyle} variant='outlined'></Chip>
-										<Chip icon={<ShieldIcon />} label={parser.getArmorType(charaDetail.character.armorType)} color={parser.getArmorTypeStyle(charaDetail.character.armorType)} sx={chipStyle} variant='outlined'></Chip>
-									</Stack>
+									<AttributeChip detail={charaDetail}/>
 								</CardContent>
 							</Card>
 					</Paper>
