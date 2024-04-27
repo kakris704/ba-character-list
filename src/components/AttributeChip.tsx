@@ -40,7 +40,7 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
   // ChipのCSS
   const chipStyle = {
 		borderRadius: 1, 
-		transform: 'skewX(-7deg)', 
+		// transform: 'skewX(-7deg)', 
 		marginRight:0.05, 
     marginBottom: 0.2,
 		textTransform: 'uppercase',
@@ -54,9 +54,11 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
       marginRight: 'auto'
     }
 	}
+
+  // 戦地適正のスタイル
   const chipTerrainStyle = {
     ...chipStyle,
-     height:62, 
+     height:61.5, 
      width: 35, 
      marginLeft:0.2,
      '.MuiChip-label': {
@@ -68,11 +70,11 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
     <>
       <Stack direction='row' sx={{margin: 0.5}}>
         <Stack direction='column'> 
-          <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle, marginLeft:0.5}} variant='outlined'></Chip>
-          <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...chipStyle, letterSpacing: -3}} variant='outlined'></Chip>
+          <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
+          <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...chipStyle, letterSpacing: -2.5}} variant='outlined'></Chip>
         </Stack>
         <Stack direction='column'>
-          <Chip icon={<FlashOnIcon />} label={parser.getBulletType(detail.character.bulletType)} color={parser.getBulletTypeStyle(detail.character.bulletType)} sx={{...chipStyle, marginLeft:0.5}} variant='outlined'></Chip>
+          <Chip icon={<FlashOnIcon />} label={parser.getBulletType(detail.character.bulletType)} color={parser.getBulletTypeStyle(detail.character.bulletType)} sx={{...chipStyle}} variant='outlined'></Chip>
           <Chip icon={<ShieldIcon />} label={parser.getArmorType(detail.character.armorType)} color={parser.getArmorTypeStyle(detail.character.armorType)} sx={chipStyle} variant='outlined'></Chip>
         </Stack>
         <Chip variant='outlined' label={

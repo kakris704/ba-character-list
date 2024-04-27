@@ -1,11 +1,11 @@
-import { Avatar, Button, Card, CardContent, CardMedia, Chip, Dialog, DialogContent, DialogTitle, Hidden, IconButton, Paper, Skeleton, Slide, Stack, Typography} from '@mui/material'
+import { Avatar, Button, Card, CardContent, CardMedia, Chip, Dialog, DialogContent, DialogTitle, Hidden, IconButton, Paper, Skeleton, Slide, Stack, Typography, SlideProps} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { TransitionProps } from '@mui/material/transitions';
 import typeParse from '../functions/parse';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AttributeChip from './AttributeChip';
-
+import InfoText from './InfoText';
 
 type props = {
 	isOpen: boolean,
@@ -103,17 +103,26 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 
 					</Card>
 					<Paper sx={{ width: 500 }} elevation={0}>
+						{/* 生徒プロフィール */}
 							<Card variant='outlined'>
 								<CardContent>
 									<Typography variant='h6' gutterBottom>{charaDetail.character.name}</Typography>
+									<Stack direction='row'>
+										<InfoText info='学園'>アビドス高等学校</InfoText>
+										<InfoText info='年齢' sx={{marginLeft: 10}}>17歳</InfoText>
+									</Stack>
+									<br />
 									<Typography variant='subtitle2'>
 										{charaDetail.character.profile}
 									</Typography>
 								</CardContent>
 							</Card>	
+						{/* 生徒ステータス */}
 							<Card sx={{mt: 2}} variant='outlined'>
 								<CardContent>
-									<AttributeChip detail={charaDetail}/>
+									<Paper sx={{transform: 'skewX(-7deg)'}} elevation={0}>
+										<AttributeChip detail={charaDetail}/>
+									</Paper>
 								</CardContent>
 							</Card>
 					</Paper>
