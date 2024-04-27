@@ -1,16 +1,16 @@
 import React from 'react'
-import { Stack, Chip, IconButton } from '@mui/material'
+import { Stack, Chip, IconButton, colors } from '@mui/material'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import InfoIcon from '@mui/icons-material/Info';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import ShieldIcon from '@mui/icons-material/Shield';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-import SoBadFaceIcon from '@mui/icons-material/SentimentVeryDissatisfiedRounded';
-import BadFaceIcon from '@mui/icons-material/SentimentDissatisfiedRounded';
-import NormalFaceIcon from '@mui/icons-material/SentimentNeutralRounded';
-import SmallGoodFaceIcon from '@mui/icons-material/SentimentSatisfiedRounded';
-import MediumGoodFaceIcon from '@mui/icons-material/SentimentSatisfiedAltRounded';
-import LargeGoodFaceIcon from '@mui/icons-material/MoodRounded';
+import SoBadFaceIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import BadFaceIcon from '@mui/icons-material/SentimentDissatisfied';
+import NormalFaceIcon from '@mui/icons-material/SentimentNeutral';
+import SmallGoodFaceIcon from '@mui/icons-material/SentimentSatisfied';
+import MediumGoodFaceIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import LargeGoodFaceIcon from '@mui/icons-material/Mood';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import HomeIcon from '@mui/icons-material/Home';
 import typeParse from '../functions/parse';
@@ -100,18 +100,23 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
 }
 
 const ConditionFace = ({terrain} : {terrain: terrain}) => {
+  const faceStyle = {
+    borderRadius: '50%',
+    color: 'rgba(255, 255, 255, 0.8)'
+  }
+
   if(terrain.DamageDealt === '80%(0.8x)') {
-    return <SoBadFaceIcon sx={{color: 'red'}}/>
+    return <SoBadFaceIcon sx={{ ...faceStyle, backgroundColor: '#b51d1d'}}/>
   } else if (terrain.DamageDealt === '90%(0.9x)') {
-    return <BadFaceIcon sx={{color: 'red'}}/>
+    return <BadFaceIcon sx={{ ...faceStyle, backgroundColor: '#b51d1d'}}/>
   } else if (terrain.DamageDealt === '100%(1x)') {
-    return <NormalFaceIcon sx={{color: '#e8ed4e'}}/>
+    return <NormalFaceIcon sx={{ ...faceStyle, backgroundColor: '#edbd4e'}}/>
   } else if (terrain.DamageDealt === '110%(1.1x)') {
-    return <SmallGoodFaceIcon sx={{color:'green'}}/>
+    return <SmallGoodFaceIcon sx={{ ...faceStyle, backgroundColor: '#52b524'}}/>
   } else if (terrain.DamageDealt === '120%(1.2x)') {
-    return <MediumGoodFaceIcon sx={{color:'green'}}/>
+    return <MediumGoodFaceIcon sx={{ ...faceStyle, backgroundColor: '#52b524'}}/>
   } else if (terrain.DamageDealt === '130%(1.3x)') {
-    return <LargeGoodFaceIcon sx={{color:'green'}}/>
+    return <LargeGoodFaceIcon sx={{ ...faceStyle, backgroundColor: '#52b524'}}/>
   } else {
     return <NormalFaceIcon />
   }
