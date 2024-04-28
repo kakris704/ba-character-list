@@ -76,9 +76,14 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
       position: 'absolute',
       top: '80%',
       left: '50%',
-      transform: 'translate(-50%, -50%) skewX(-7deg)', 
+      transform: 'translate(-50%, -50%) skewX(-8deg) scale(1.2)', 
       backgroundColor:'rgba(255, 255, 255, 0.7)',
-      backdropFilter: 'blur(3px)',
+      backfaceVisibility: 'hidden',
+      WebkitBackfaceVisibility: 'hidden',
+      filter: 'blur(0)',
+      WebkitFilter: 'nlur(0)',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
       width: 550
     }} 
       elevation={5}

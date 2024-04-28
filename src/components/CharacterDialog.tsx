@@ -68,16 +68,15 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 					</IconButton>
 				</Stack>
 			</DialogTitle>
-			<DialogContent sx={{ marginTop: 1}}>
+			<DialogContent sx={{ marginTop: 1, overflowY: 'hidden'}}>
 				<Stack spacing={2} direction='row'>
-					<Card variant='outlined' style={{overflow:'hidden', position:'relative'}}>
+					<Card variant='outlined' style={{overflow:'hidden', position:'relative', height:690, width:500}}>
 						{// 読み込み中はスケルトンに置き換える
 						isLoad ? (
 							<CardMedia
-								component='img'
-								height='690'
+								component='div'
 								image={charaDetail.image.portrait}
-								sx={{ maxWidth: 500, minWidth: 350, backgroundColor:'#dff8ff'}}
+								sx={{backgroundColor:'#dff8ff', height:690, width:1000, backgroundPosition: 'center', backgroundSize: 'contain', position:'absolute', right:'-50%'}}
 							/>
 							) : (
 							<>
