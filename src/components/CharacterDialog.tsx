@@ -77,7 +77,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 								component='img'
 								height='690'
 								image={charaDetail.image.portrait}
-								sx={{ maxWidth: 500, minWidth: 350}}
+								sx={{ maxWidth: 500, minWidth: 350, backgroundColor:'#dff8ff'}}
 							/>
 							) : (
 							<>
@@ -126,7 +126,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 						{/* 生徒ステータス */}
 							<Card sx={{mt: 2}} variant='outlined'>
 								<CardContent>
-									<div style={{backgroundColor:'#eeeeee', height:500}}></div>
+									<div style={{backgroundColor:'#eeeeee', height:500, borderRadius:10}}></div>
 								</CardContent>
 							</Card>
 					</Paper>
