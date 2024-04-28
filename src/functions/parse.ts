@@ -86,6 +86,34 @@ class typeParse {
         }
         return result;
 	}
+
+	getSchool(school: string) {
+		switch(school) {
+			case 'Gehenna':
+				return 'ゲヘナ学園';
+			case 'Millennium':
+				return 'ミレニアム';
+			case 'Trinity':
+				return 'トリニティ総合学園';
+			case 'Abydos':
+				return 'アビドス高等学校';
+			case 'Shanhaijing':
+				return '山海経高級中学校';
+			case 'Hyakkiyako':
+				return '百鬼夜行連合学院';
+			case 'RedWinter':
+				return 'レッドウィンター連邦学園';
+			case 'SRT':
+				return 'SRT特殊学園';
+			case 'Valkyrie':
+				return 'ヴァルキューレ警察学校';
+			case 'Arius':
+				return 'アリウス分校';
+			default:
+				return '-'
+		}
+		
+	}
 }
 
 export default typeParse;

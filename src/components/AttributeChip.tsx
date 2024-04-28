@@ -66,12 +66,17 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
     }
   }
 
+  let infoStyle: any = {...chipStyle}
+  if (detail.character.role === 'Dealer') {
+    infoStyle.letterSpacing = -3.5
+  }
+
   return (
     <>
       <Stack direction='row' sx={{margin: 0.5}}>
         <Stack direction='column'> 
           <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
-          <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...chipStyle, letterSpacing: -2.5}} variant='outlined'></Chip>
+          <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...infoStyle}} variant='outlined'></Chip>
         </Stack>
         <Stack direction='column'>
           <Chip icon={<FlashOnIcon />} label={parser.getBulletType(detail.character.bulletType)} color={parser.getBulletTypeStyle(detail.character.bulletType)} sx={{...chipStyle}} variant='outlined'></Chip>

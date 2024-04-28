@@ -5,7 +5,7 @@ const InfoText = ({ children, info, sx = {}}: {children: any, info: any, sx?:any
   return (
     <Stack direction='row' sx={sx}>
         <div style={{width: 5, backgroundColor: '#bbbbbb', borderRadius: 10}}/>
-        <Stack direction='column'>
+        <Stack direction='column' sx={{borderBottom: 'dashed 1px #bbbbbb'}}>
             <Typography variant='body2' sx={{mt: 'auto', pl:0.5, color: 'gray'}}>{info}</Typography>
             <Typography variant='h6' sx={{float: 'right', pl: 0.4}}>{children}</Typography>
         </Stack>
