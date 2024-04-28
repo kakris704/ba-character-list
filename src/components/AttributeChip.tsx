@@ -47,7 +47,6 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
 		width: 100,
     height: 30,
 		fontWeight: 'bold',
-		opacity: 0.9,
     justifyContent: 'start',
     backgroundColor: 'white',
     '.MuiChip-label' : {
