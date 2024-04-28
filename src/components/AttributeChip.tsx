@@ -89,7 +89,7 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
       elevation={5}
     >
       <Stack direction='row' sx={{margin: 0.8, justifyContent: 'center'}}>
-        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, alignItems:'center', marginTop: 'auto', marginBottom: 'auto', marginRight: 10}} />
+        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, alignItems:'center', marginTop: 'auto', marginBottom: 'auto', marginRight: 15}} />
         <Stack direction='column'> 
           <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...infoStyle}} variant='outlined'></Chip>
           <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
@@ -117,7 +117,7 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
             <ConditionFace terrain={detail.terrain.indoor} />
           </Stack>
         } sx={{...chipTerrainStyle}}/>
-        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, marginTop: 'auto', marginBottom: 'auto', marginLeft:10}} />
+        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, marginTop: 'auto', marginBottom: 'auto', marginLeft:15}} />
       </Stack>
     </Paper>
   )
