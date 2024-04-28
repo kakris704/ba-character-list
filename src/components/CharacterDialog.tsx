@@ -59,7 +59,6 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 			onClose={handleClose} 
 			maxWidth='xl' 
 			PaperProps={{sx:{borderRadius: 5}}}
-			scroll='paper'
 		>
 			<DialogTitle sx={{ borderBottom: 'solid 1px lightgray', paddingBottom: 1, background: 'linear-gradient(90deg, rgba(207,237,255,1) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 100%)' }}>
 				<Stack direction='row-reverse'>
@@ -71,19 +70,19 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 			</DialogTitle>
 			<DialogContent sx={{ marginTop: 1}}>
 				<Stack spacing={2} direction='row'>
-					<Card variant='outlined'>
+					<Card variant='outlined' style={{overflow:'hidden', position:'relative'}}>
 						{// 読み込み中はスケルトンに置き換える
 						isLoad ? (
 							<CardMedia
 								component='img'
 								height='690'
 								image={charaDetail.image.portrait}
-								sx={{ maxWidth: 500, minWidth: 200 }}
+								sx={{ maxWidth: 500, minWidth: 350}}
 							/>
-						) : (
+							) : (
 							<>
 								<Skeleton
-									height={700}
+									height={690}
 									width={500}
 									animation='wave'
 									variant='rectangular'
@@ -98,24 +97,25 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 									sx={{ display: 'none' }}
 								/>
 							</>
-						)
+							)
 						}
+						<AttributeChip detail={charaDetail}/>
 
 					</Card>
-					<Paper sx={{ width: 500 }} elevation={0}>
+					<Paper sx={{ width: 500, height:690, overflowY:'auto', borderBottom: 'solid 1px #e0e0e0'}} elevation={0}>
 						{/* 生徒プロフィール */}
 							<Card variant='outlined'>
 								<CardContent>
 									<Typography variant='h6' gutterBottom sx={{fontWeight:600}}>{charaDetail.character.name}</Typography>
-									<Stack direction='row'>
-									<Stack direction='column'>
-										<InfoText info='学園'>{parser.getSchool(charaDetail.info.school)}</InfoText>
-										<InfoText info='誕生日' sx={{mt:2}}>{charaDetail.info.birthDate}</InfoText>
-									</Stack>
-									<Stack direction='column' sx={{position: 'absolute', ml:32}}>
-										<InfoText info='年齢'>{charaDetail.info.age}</InfoText>
-										<InfoText info='部活' sx={{mt:2}}>{charaDetail.info.club}</InfoText>
-									</Stack>
+									<Stack direction='row' sx={{position: 'relative'}}>
+										<Stack direction='column' sx={{}}>
+											<InfoText info='学園'>{parser.getSchool(charaDetail.info.school)}</InfoText>
+											<InfoText info='誕生日' sx={{mt:2}}>{charaDetail.info.birthDate}</InfoText>
+										</Stack>
+										<Stack direction='column' sx={{position:'absolute', left:250}}>
+											<InfoText info='年齢'>{`${charaDetail.info.age} (${charaDetail.info.schoolYear})`}</InfoText>
+											<InfoText info='部活' sx={{mt:2}}>{parser.getClub(charaDetail.info.club)}</InfoText>
+										</Stack>
 									</Stack>
 									<br />
 									<Typography variant='subtitle2'>
@@ -126,9 +126,7 @@ const CharacterDialog = ({ isOpen, setIsOpen, charaDetail }: props) => {
 						{/* 生徒ステータス */}
 							<Card sx={{mt: 2}} variant='outlined'>
 								<CardContent>
-									<Paper sx={{transform: 'skewX(-7deg)'}} elevation={0}>
-										<AttributeChip detail={charaDetail}/>
-									</Paper>
+									<div style={{backgroundColor:'#eeeeee', height:500}}></div>
 								</CardContent>
 							</Card>
 					</Paper>

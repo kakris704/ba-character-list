@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Chip, IconButton, colors } from '@mui/material'
+import { Stack, Chip, IconButton, Paper } from '@mui/material'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import InfoIcon from '@mui/icons-material/Info';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
@@ -49,6 +49,7 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
 		fontWeight: 'bold',
 		opacity: 0.9,
     justifyContent: 'start',
+    backgroundColor: 'white',
     '.MuiChip-label' : {
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -68,15 +69,25 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
 
   let infoStyle: any = {...chipStyle}
   if (detail.character.role === 'Dealer') {
-    infoStyle.letterSpacing = -3.5
+    infoStyle.letterSpacing = -2.5
   }
 
   return (
-    <>
-      <Stack direction='row' sx={{margin: 0.5}}>
+    <Paper sx={{
+      position: 'absolute',
+      top: '80%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) skewX(-7deg)', 
+      backgroundColor:'rgba(255, 255, 255, 0.7)',
+      backdropFilter: 'blur(3px)',
+      width: 550
+    }} 
+      elevation={5}
+    >
+      <Stack direction='row' sx={{margin: 0.8, justifyContent: 'center'}}>
         <Stack direction='column'> 
-          <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
           <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...infoStyle}} variant='outlined'></Chip>
+          <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
         </Stack>
         <Stack direction='column'>
           <Chip icon={<FlashOnIcon />} label={parser.getBulletType(detail.character.bulletType)} color={parser.getBulletTypeStyle(detail.character.bulletType)} sx={{...chipStyle}} variant='outlined'></Chip>
@@ -100,9 +111,9 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
             <HomeIcon sx={{mb:0.7, backgroundColor: '#888888', borderRadius: 1, color: '#ffffff'}} />
             <ConditionFace terrain={detail.terrain.indoor} />
           </Stack>
-        } sx={chipTerrainStyle}/>
+        } sx={{...chipTerrainStyle}}/>
       </Stack>
-    </>
+    </Paper>
   )
 }
 

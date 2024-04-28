@@ -31,6 +31,13 @@ class blueAPI {
         const json = await res.json();
         return json;
     }
+
+    // テスト
+    async getTest() {
+        const res = await fetch('https://api-blue-archive.vercel.app/api/characters');
+        const json = await res.json();
+        return json;
+    }
 }
 
 export default blueAPI;

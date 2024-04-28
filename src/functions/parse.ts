@@ -112,7 +112,93 @@ class typeParse {
 			default:
 				return '-'
 		}
-		
+	}
+
+	getClub(club: string) {
+		switch(club) {
+			case 'Kohshinjo68':
+				return '便利屋68';
+			case 'Countermeasure':
+				return '廃校対策委員会';
+			case 'Fuuki':
+				return '風紀委員会';
+			case 'PandemoniumSociety':
+				return '万魔殿';
+			case 'RemedialClass':
+				return '補習授業部';
+			case 'Shugyobu':
+				return '修行部';
+			case 'KnightsHospitaller':
+				return '救護騎士団';
+			case 'TeaParty':
+				return 'ティーパーティー'
+			case 'SPTF':
+				return '特異現象捜査部';
+			case 'GameDev':
+				return 'ゲーム開発部';
+			case 'FoodService':
+				return '給食部';
+			case 'TrinityVigilance':
+				return 'トリニティ自警団';
+			case 'Veritas':
+				return 'ヴェリタス';
+			case 'BookClub':
+				return '図書委員会';
+			case 'RedwinterSecretary':
+				return '事務局';
+			case 'NinpoKenkyubu':
+				return '忍術研究部';
+			case 'CleanNClearing':
+				return 'C&C';
+			case 'TheSeminar':
+				return 'セミナー';
+			case 'GourmetClub':
+				return '美食研究会';
+			case 'KnowledgeLiberationFront':
+				return '知識解放戦線';
+			case 'RabbitPlatoon':
+				return 'RABBIT小隊';
+			case 'Engineer':
+				return 'エンジニア部';
+			case 'MatsuriOffice':
+				return 'お祭り運営委員会';
+			case 'HotSpringsDepartment':
+				return '温泉開発部';
+			case 'AriusSqud':
+				return 'アリウススクワッド';
+			case 'SisterHood':
+				return 'シスターフッド';
+			case 'HoukagoDessert':
+				return '放課後スイーツ部';
+			case 'Class227':
+				return '227号特別クラス';
+			case 'Onmyobu':
+				return '陰陽部';
+			case 'Meihuayuan':
+				return '梅花園';
+			case 'PublicPeaceBureau':
+				return '公安局';
+			case 'Endanbou':
+				return '錬丹術研究会';
+			case 'BlackTortoisePromenade':
+				return '玄武商会';
+			case 'Justice':
+				return '正義実現委員会';
+			case 'LaborParty':
+				return '工務部';
+			case 'anzenkyoku':
+				return '生活安全局';
+			case 'Hyakkayouran':
+				return '百花繚乱';
+			case 'Emergentology':
+				return '救急医学部';
+			case 'TrainingClub':
+				return 'トレーニング部';
+			case 'Genryumon':
+				return '玄龍門';
+			default:
+				return '無し';
+		}
 	}
 }
 

@@ -20,6 +20,13 @@ function App() {
     },
     image: {
       portrait: 'a'
+    },
+    info: {
+      school:'',
+      club:'',
+      age: '',
+      birthDate:'',
+      schoolYear:''
     }
   });
   // APIのクラス
@@ -35,6 +42,7 @@ function App() {
   // マウント時
   useEffect(() => {
       make();
+      test();
       return () => {
         setCards([]);
       }
@@ -50,6 +58,10 @@ function App() {
     }
   });
 
+  const test = async() => {
+    const res = await api.getTest();
+    console.log(res);
+  }
 
   return (
     <>
