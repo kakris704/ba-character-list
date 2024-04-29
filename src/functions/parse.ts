@@ -200,6 +200,17 @@ class typeParse {
 				return '無し';
 		}
 	}
+
+	getSquadType(type:string ):'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' {
+		switch (type) {
+			case 'Striker':
+				return 'error'
+			case 'Special':
+				return 'success'
+			default:
+				return 'secondary'
+		}
+	}
 }
 
 export default typeParse;

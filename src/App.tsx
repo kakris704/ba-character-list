@@ -16,7 +16,9 @@ function App() {
     character: {
       name: 'テスト',
       profile: 'テスト',
-      bulletType: '爆発'
+      bulletType: '爆発',
+      Rarity:'SSR',
+      squadType:'Striker'
     },
     image: {
       portrait: 'a'
@@ -42,7 +44,6 @@ function App() {
   // マウント時
   useEffect(() => {
       make();
-      test();
       return () => {
         setCards([]);
       }
@@ -57,11 +58,6 @@ function App() {
       fontFamily: 'Noto Sans JP'
     }
   });
-
-  const test = async() => {
-    const res = await api.getTest();
-    console.log(res);
-  }
 
   return (
     <>

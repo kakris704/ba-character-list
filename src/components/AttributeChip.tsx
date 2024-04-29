@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Stack, Chip, IconButton, Paper } from '@mui/material'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import InfoIcon from '@mui/icons-material/Info';
@@ -14,13 +14,16 @@ import LargeGoodFaceIcon from '@mui/icons-material/Mood';
 import LandscapeIcon from '@mui/icons-material/Landscape';
 import HomeIcon from '@mui/icons-material/Home';
 import typeParse from '../functions/parse';
+import StarIcon from '@mui/icons-material/Star';
 
 type detail = {
   character: {
     role: string,
     bulletType: string,
     position: string,
-    armorType: string
+    armorType: string,
+    rarity: string,
+    squadType: string
   },
   terrain:{
     indoor: terrain,
@@ -72,9 +75,10 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
   }
 
   return (
+    <div style={{position:'absolute', bottom:'3%', width:500, height:200, overflow:'hidden'}}>
     <Paper sx={{
       position: 'absolute',
-      top: '80%',
+      bottom: '5%',
       left: '50%',
       transform: 'translate(-50%, -50%) skewX(-8deg) scale(1.2)', 
       backgroundColor:'rgba(255, 255, 255, 0.7)',
@@ -84,12 +88,16 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
       WebkitFilter: 'nlur(0)',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
-      width: 550
+      width: 1000
     }} 
       elevation={5}
     >
+      <Stack direction='row' sx={{ position:'absolute', left:330, bottom:64, }}>
+        <Chip label={detail.character.squadType} color={parser.getSquadType(detail.character.squadType)} sx={{...chipStyle, height:20}} variant='outlined'></Chip>
+        <Rarity rarity={detail.character.rarity} />
+      </Stack>
       <Stack direction='row' sx={{margin: 0.8, justifyContent: 'center'}}>
-        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, alignItems:'center', marginTop: 'auto', marginBottom: 'auto', marginRight: 10}} />
+        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, alignItems:'center', marginTop: 'auto', marginBottom: 'auto', marginRight: 15, borderRadius:10}} />
         <Stack direction='column'> 
           <Chip icon={<InfoIcon />} label={parser.getRole(detail.character.role)} color='primary' sx={{...infoStyle}} variant='outlined'></Chip>
           <Chip icon={<FmdGoodIcon />} label={detail.character.position} color='secondary' sx={{...chipStyle}} variant='outlined'></Chip>
@@ -117,9 +125,10 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
             <ConditionFace terrain={detail.terrain.indoor} />
           </Stack>
         } sx={{...chipTerrainStyle}}/>
-        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, marginTop: 'auto', marginBottom: 'auto', marginLeft:10}} />
+        <div style={{backgroundColor:'#bbbbbb', width:2, height:40, marginTop: 'auto', marginBottom: 'auto', marginLeft:15, borderRadius: 10}} />
       </Stack>
     </Paper>
+    </div>
   )
 }
 
@@ -143,6 +152,37 @@ const ConditionFace = ({terrain} : {terrain: terrain}) => {
     return <LargeGoodFaceIcon sx={{ ...faceStyle, backgroundColor: '#52b524'}}/>
   } else {
     return <NormalFaceIcon />
+  }
+}
+
+const Rarity = ({rarity}: {rarity:string}) => {
+  const style = {
+    color: '#FFDB60',
+    filter: 'drop-shadow(0px 0px 2px #684D00)'
+  }
+  switch(rarity) {
+    case 'R':
+      return (
+        <Stack direction='row' sx={{ml: 1}}>
+          <StarIcon fontSize='small' sx={style} />
+        </Stack>
+      );
+    case 'SR':
+      return (<Stack direction='row' sx={{ml: 1}}>
+        <StarIcon fontSize='small' sx={style} />
+        <StarIcon fontSize='small' sx={style} />
+      </Stack>
+      );
+    case 'SSR':
+      return (
+        <Stack direction='row' sx={{ml: 1}}>
+          <StarIcon fontSize='small' sx={style} />
+          <StarIcon fontSize='small' sx={style} />
+          <StarIcon fontSize='small' sx={style} />
+        </Stack>
+      );
+    default:
+      return (<></>)
   }
 }
 
