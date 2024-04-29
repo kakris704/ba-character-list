@@ -22,7 +22,8 @@ type detail = {
     bulletType: string,
     position: string,
     armorType: string,
-    rarity: string
+    rarity: string,
+    squadType: string
   },
   terrain:{
     indoor: terrain,
@@ -73,10 +74,6 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
     infoStyle.letterSpacing = -2.5
   }
 
-  useEffect(() => {
-    console.log(detail.character.rarity)
-  }, [detail])
-
   return (
     <div style={{position:'absolute', bottom:'3%', width:500, height:200, overflow:'hidden'}}>
     <Paper sx={{
@@ -96,7 +93,7 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
       elevation={5}
     >
       <Stack direction='row' sx={{ position:'absolute', left:330, bottom:64, }}>
-        <Chip label='Striker' color='error' sx={{...chipStyle, height:20}} variant='outlined'></Chip>
+        <Chip label={detail.character.squadType} color={parser.getSquadType(detail.character.squadType)} sx={{...chipStyle, height:20}} variant='outlined'></Chip>
         <Rarity rarity={detail.character.rarity} />
       </Stack>
       <Stack direction='row' sx={{margin: 0.8, justifyContent: 'center'}}>
@@ -166,19 +163,19 @@ const Rarity = ({rarity}: {rarity:string}) => {
   switch(rarity) {
     case 'R':
       return (
-        <Stack direction='row'>
+        <Stack direction='row' sx={{ml: 1}}>
           <StarIcon fontSize='small' sx={style} />
         </Stack>
       );
     case 'SR':
-      return (<Stack direction='row'>
+      return (<Stack direction='row' sx={{ml: 1}}>
         <StarIcon fontSize='small' sx={style} />
         <StarIcon fontSize='small' sx={style} />
       </Stack>
       );
     case 'SSR':
       return (
-        <Stack direction='row'>
+        <Stack direction='row' sx={{ml: 1}}>
           <StarIcon fontSize='small' sx={style} />
           <StarIcon fontSize='small' sx={style} />
           <StarIcon fontSize='small' sx={style} />
