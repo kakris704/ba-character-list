@@ -16,7 +16,8 @@ function App() {
     character: {
       name: 'テスト',
       profile: 'テスト',
-      bulletType: '爆発'
+      bulletType: '爆発',
+      Rarity:'SSR'
     },
     image: {
       portrait: 'a'
