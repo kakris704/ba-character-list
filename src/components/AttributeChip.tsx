@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Stack, Chip, IconButton, Paper } from '@mui/material'
+import { Stack, Chip, IconButton, Paper, Tooltip, Zoom } from '@mui/material'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import InfoIcon from '@mui/icons-material/Info';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
@@ -106,12 +106,15 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
           <Chip icon={<FlashOnIcon />} label={parser.getBulletType(detail.character.bulletType)} color={parser.getBulletTypeStyle(detail.character.bulletType)} sx={{...chipStyle}} variant='outlined'></Chip>
           <Chip icon={<ShieldIcon />} label={parser.getArmorType(detail.character.armorType)} color={parser.getArmorTypeStyle(detail.character.armorType)} sx={chipStyle} variant='outlined'></Chip>
         </Stack>
+        <Tooltip title={detail.terrain.urban.DamageDealt} TransitionComponent={Zoom} arrow>
         <Chip variant='outlined' label={
           <Stack direction='column'>
             <LocationCityIcon sx={{mb:0.7, backgroundColor: '#888888', borderRadius: 1, color: '#ffffff'}} />
             <ConditionFace terrain={detail.terrain.urban} />
           </Stack>
         } sx={chipTerrainStyle}/>
+        </Tooltip>
+        <Tooltip title={detail.terrain.outdoor.DamageDealt} TransitionComponent={Zoom} arrow>
         <Chip variant='outlined' label={
           <Stack direction='column'>
             <LandscapeIcon sx={{mb:0.7, backgroundColor: '#888888', borderRadius: 1, color: '#ffffff'}} />
@@ -119,12 +122,15 @@ const AttributeChip = ({ detail }: { detail: detail}) => {
             
           </Stack>
         } sx={chipTerrainStyle}/>
+        </Tooltip>
+        <Tooltip title={detail.terrain.indoor.DamageDealt} TransitionComponent={Zoom} arrow>
         <Chip variant='outlined' label={
           <Stack direction='column'>
             <HomeIcon sx={{mb:0.7, backgroundColor: '#888888', borderRadius: 1, color: '#ffffff'}} />
             <ConditionFace terrain={detail.terrain.indoor} />
           </Stack>
         } sx={{...chipTerrainStyle}}/>
+        </Tooltip>
         <div style={{backgroundColor:'#bbbbbb', width:2, height:40, marginTop: 'auto', marginBottom: 'auto', marginLeft:15, borderRadius: 10}} />
       </Stack>
     </Paper>
