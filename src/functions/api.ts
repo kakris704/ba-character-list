@@ -31,7 +31,6 @@ class blueAPI {
         const json = await res.json();
         return json;
     }
-
 }
 
 export default blueAPI;
