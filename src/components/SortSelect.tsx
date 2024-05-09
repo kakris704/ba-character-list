@@ -1,5 +1,5 @@
 import { Select, InputLabel, MenuItem, SelectChangeEvent, FormControl } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const SortSelect = ({cards, setCards, res, filter}: {cards:any, setCards:Function, res:any, filter: any}) => {
 	const [type, setType] = useState('default');
@@ -7,19 +7,27 @@ const SortSelect = ({cards, setCards, res, filter}: {cards:any, setCards:Functio
 	const handleChange = (e: SelectChangeEvent) => {
 		setType(e.target.value);
 		console.log(e.target.value);
+		updateChange(e.target.value);
+	}
+
+	const updateChange = (type: string) => {
 		const list = [...filter];
-		if(e.target.value === 'name') {
+		if(type === 'name') {
 			sortName(list);
-		} else if(e.target.value === 'school') {
+		} else if(type === 'school') {
 			sortName(list);
 			sortSchool(list);
-		} else if(e.target.value === 'club') {
+		} else if(type === 'club') {
 			sortName(list);
 			sortClub(list);
 			sortSchool(list);
 		}
 		setCards(list);
 	}
+
+	useEffect(() => {
+		updateChange(type);
+	}, [filter]);
 
 	const sortName = (list: any) => {
 		list.sort((f: { character: { name: string; }; }, s: { character: { name: string; }; }) => {

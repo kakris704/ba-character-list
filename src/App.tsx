@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Container, Grid, ThemeProvider, createTheme } from '@mui/material';
+import { Button, Container, Grid, ThemeProvider, createTheme } from '@mui/material';
 import CharacterCard from './components/CharacterCard';
 import CharacterDialog from './components/CharacterDialog';
 import blueAPI from './functions/api';
 import SortSelect from './components/SortSelect';
 import FilterSelect from './components/FilterSelect';
+import FilterDialog from './components/FilterDialog';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
   const [cards, setCards] = useState<object[]>([]);
   const [filter, setFilter] = useState<object[]>([]);
   const [res, setRes] = useState<object[]>([]);
+  const [filterOpen, setFilterOpen] = useState(false);
   // ダイアログに表示するデータ
   const [detail, setDetail] = useState({
     character: {
@@ -64,6 +66,10 @@ function App() {
     }
   });
 
+  const handleClick = () => {
+    setFilterOpen(true);
+  }
+
   // 配列をソートする関数
 
   return (
@@ -71,7 +77,7 @@ function App() {
       <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
         <SortSelect cards={cards} setCards={setCards} res={res} filter={filter}/>
-        <FilterSelect cards={cards} setCards={setCards} res={res} setFilter={setFilter} />
+        <Button onClick={handleClick} sx={{mt:6, ml:5}} variant='outlined'>絞り込み</Button>
         <Grid container spacing={4} sx={{mt:0}}>
           {cards.map((item: object, index:number) => {
               console.log('map')
@@ -79,6 +85,7 @@ function App() {
           })}
         </Grid> 
       </Container>
+      <FilterDialog filterOpen={filterOpen} setFilterOpen={setFilterOpen} cards={cards} setCards={setCards} res={res} setFilter={setFilter}/>
       <CharacterDialog isOpen={dialogOpen} setIsOpen={setDialogOpen} charaDetail={detail}/>
       </ThemeProvider>
     </>
