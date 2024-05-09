@@ -1,5 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Skeleton, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type props = {
   setIsOpen: Function,
@@ -16,6 +16,9 @@ const CharacterCard = ({ setIsOpen, charaDetail, setDetail }: props) => {
   const handleLoad = () => {
     setIsLoad(true);
   }
+  useEffect(() => {
+    setIsLoad(false);
+  }, [charaDetail])
 
   // カード選択時、ダイアログを開く
   const handleClick = () => {
