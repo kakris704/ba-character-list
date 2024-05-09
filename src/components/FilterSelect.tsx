@@ -48,6 +48,7 @@ const FilterSelect = ({cards, setCards, res, setFilter, school, setSchool, year,
 				<MenuItem value='Abydos'>アビドス</MenuItem>
 				<MenuItem value='Gehenna'>ゲヘナ</MenuItem>
 				<MenuItem value='Millennium'>ミレニアム</MenuItem>
+				<MenuItem value='Trinity'>トリニティ</MenuItem>
 				<MenuItem value='Shanhaijing'>山海経</MenuItem>
 				<MenuItem value='RedWinter'>レッドウィンター</MenuItem>
 				<MenuItem value='SRT'>SRT</MenuItem>
